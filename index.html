@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#05080f">
-  <title>RAFTAAR | Cricket Expert</title>
+  <title>AJAY GUJJAR | Cricket Expert</title>
   
   <!-- Preconnect & Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,10 +41,7 @@
     }
 
     body {
-      background-color: #05080f;
-      background-image: 
-        radial-gradient(circle at 10% 15%, rgba(255, 30, 60, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 90% 85%, rgba(0, 229, 255, 0.12) 0%, transparent 45%);
+      background-color: #04060c;
       font-family: 'Rajdhani', sans-serif;
       color: #e2e8f0;
       display: flex;
@@ -52,8 +49,34 @@
       align-items: center;
       min-height: 100vh;
       min-height: 100dvh;
-      padding: 12px 14px calc(12px + env(safe-area-inset-bottom, 0px));
+      padding: 12px 14px calc(14px + env(safe-area-inset-bottom, 0px));
       overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Fullscreen Deep Animated Canvas */
+    #fx-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ambient Glow Overlay */
+    .ambient-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 15%, rgba(255, 30, 60, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 90% 85%, rgba(0, 229, 255, 0.12) 0%, transparent 45%);
+      pointer-events: none;
+      z-index: 1;
     }
 
     .container {
@@ -63,21 +86,23 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
+      z-index: 2;
     }
 
-    /* Cyber Card Container */
+    /* Cyber Card */
     .cyber-card {
       position: relative;
       width: 100%;
-      background: rgba(8, 14, 24, 0.95);
+      background: rgba(8, 14, 24, 0.94);
       border: 1px solid rgba(0, 229, 255, 0.22);
       clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
       padding: 18px 16px 20px;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 229, 255, 0.08);
-      backdrop-filter: blur(8px);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.95), 0 0 15px rgba(0, 229, 255, 0.12);
+      backdrop-filter: blur(10px);
     }
 
-    /* Status Bar */
+    /* Header Bar */
     .status-bar {
       display: flex;
       justify-content: space-between;
@@ -113,7 +138,9 @@
     .sys-id {
       color: #00e5ff;
       font-family: 'Orbitron', monospace;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
+      font-weight: 800;
+      text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
     }
 
     /* Profile Avatar */
@@ -129,7 +156,7 @@
       padding: 3px;
       background: linear-gradient(135deg, #ff1e3c, #00e5ff);
       clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
-      box-shadow: 0 0 15px rgba(0, 229, 255, 0.35);
+      box-shadow: 0 0 18px rgba(0, 229, 255, 0.35);
       animation: pulseBorder 3s infinite alternate;
     }
 
@@ -149,15 +176,15 @@
     /* Main Headings */
     .hero-title {
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(26px, 7.5vw, 32px);
+      font-size: clamp(24px, 7vw, 30px);
       font-weight: 900;
       text-align: center;
-      letter-spacing: 3px;
+      letter-spacing: 2.5px;
       color: #ffffff;
       text-transform: uppercase;
-      line-height: 1.1;
+      line-height: 1.15;
       margin-bottom: 5px;
-      text-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
     }
 
     .sub-heading {
@@ -168,10 +195,6 @@
       color: #ff334b;
       margin-bottom: 12px;
       text-transform: uppercase;
-    }
-
-    .sub-heading span {
-      color: #00e5ff;
     }
 
     .hero-desc {
@@ -201,7 +224,7 @@
 
     .stat-card .val {
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(13px, 3.8vw, 16px);
+      font-size: clamp(12px, 3.6vw, 15px);
       font-weight: 800;
       color: #ffffff;
       margin-bottom: 2px;
@@ -216,7 +239,7 @@
       text-transform: uppercase;
     }
 
-    /* CTA Button (High Converting Mobile Tap Target) */
+    /* High Converting CTA Button */
     .btn-container {
       margin-bottom: 10px;
       width: 100%;
@@ -240,7 +263,7 @@
       letter-spacing: 2px;
       text-decoration: none;
       text-transform: uppercase;
-      box-shadow: 0 4px 20px rgba(255, 30, 60, 0.5);
+      box-shadow: 0 4px 22px rgba(255, 30, 60, 0.55);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
       cursor: pointer;
       position: relative;
@@ -320,15 +343,15 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 5px 14px;
+      padding: 6px 15px;
       background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(0, 229, 255, 0.3);
+      border: 1px solid rgba(0, 229, 255, 0.35);
       border-radius: 20px;
       font-size: 11px;
       font-weight: 600;
       color: #94a3b8;
       backdrop-filter: blur(6px);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
     }
 
     .ads-setup-badge .highlight {
@@ -349,6 +372,7 @@
       display: inline-flex;
       align-items: center;
       gap: 4px;
+      transition: color 0.2s ease;
     }
 
     .ads-setup-badge a:active {
@@ -357,6 +381,10 @@
   </style>
 </head>
 <body>
+
+  <!-- Background Animated Canvas (Meteors + Fireworks) -->
+  <canvas id="fx-canvas"></canvas>
+  <div class="ambient-glow"></div>
 
   <div class="container">
     
@@ -369,30 +397,30 @@
           <div class="pulse-dot"></div>
           VELOCITY CHANNEL ACTIVE
         </div>
-        <div class="sys-id">SYS ID #RFT-992</div>
+        <div class="sys-id">GUJJAR</div>
       </div>
 
       <!-- Hexagon Profile Pic -->
       <div class="profile-box">
         <div class="avatar-wrapper">
-          <img src="https://i.postimg.cc/3RTGRTBx/IMG-20261009-213621-906.jpg" alt="Raftaar Profile">
+          <img src="https://i.postimg.cc/3RTGRTBx/IMG-20261009-213621-906.jpg" alt="Ajay Gujjar Profile" loading="eager">
         </div>
       </div>
 
       <!-- Title & Subtitle -->
-      <h1 class="hero-title">RAFTAAR</h1>
+      <h1 class="hero-title">AJAY GUJJAR</h1>
       <div class="sub-heading">CRICKET EXPERT • IPL / ICC RADAR DESK</div>
 
       <!-- Cricket Description -->
       <p class="hero-desc">
-        Access Raftaar's official Telegram channel for high-tempo cricket match breakdowns, live pitch & player data, and instant match notifications.
+        Access Ajay Gujjar's official Telegram channel for high-tempo cricket match breakdowns, live pitch & player data, and instant match notifications.
       </p>
 
       <!-- Stat Badges -->
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="val">150+ KM/H</div>
-          <div class="label">BALL TEMPO</div>
+          <div class="val">50K+ TIPS</div>
+          <div class="label">ACCURACY</div>
         </div>
         <div class="stat-card">
           <div class="val">IPL / ICC</div>
@@ -406,7 +434,7 @@
 
       <!-- High-Converting Join Telegram CTA -->
       <div class="btn-container">
-        <a href="https://t.me/+KK_w3bg_rphjMjQ1" class="cta-btn" onclick="trackLead()">
+        <a href="https://t.me/+KK_w3bg_rphjMjQ1" class="cta-btn" onclick="trackLead(event)">
           <i class="fab fa-telegram-plane"></i>
           JOIN TELEGRAM
         </a>
@@ -428,13 +456,13 @@
     </div>
 
     <div class="disclaimer-text">
-      Not affiliated with Telegram, IPL, ICC, Meta Platforms, Inc., or Facebook. • © 2026 raftaar-cricket.online
+      Not affiliated with Telegram, IPL, ICC, Meta Platforms, Inc., or Facebook. • © 2026 ajay-gujjar-cricket.online
     </div>
 
     <!-- Stylish Ads Setup By Babu Sahab -->
     <div class="ads-setup-badge">
       <span class="highlight">Ads Setup by</span>
-      <a href="https://t.me/sahab164" target="_blank">
+      <a href="https://t.me/sahab164" target="_blank" rel="noopener noreferrer">
         Babu Sahab
         <i class="fas fa-external-link-alt" style="font-size: 9px;"></i>
       </a>
@@ -444,11 +472,146 @@
 
   <script>
     // Facebook Pixel Event Tracking
-    function trackLead() {
+    function trackLead(event) {
       if (typeof fbq === 'function') {
         fbq('track', 'Lead');
       }
     }
+
+    // ==========================================
+    // METEORS & FIREWORKS DEEP BACKGROUND ENGINE
+    // ==========================================
+    const canvas = document.getElementById('fx-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let w = (canvas.width = window.innerWidth);
+    let h = (canvas.height = window.innerHeight);
+
+    window.addEventListener('resize', () => {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    });
+
+    // 1. Meteoroids Setup
+    const meteors = [];
+    function spawnMeteor() {
+      const angle = (Math.PI / 4) + (Math.random() - 0.5) * 0.15; // ~45 deg diagonal fall
+      meteors.push({
+        x: Math.random() * (w + 200) - 100,
+        y: Math.random() * -150 - 20,
+        length: 70 + Math.random() * 90,
+        speed: 5 + Math.random() * 5,
+        dx: Math.cos(angle),
+        dy: Math.sin(angle),
+        size: 1 + Math.random() * 1.5,
+        opacity: 0.35 + Math.random() * 0.45,
+        color: Math.random() > 0.4 ? '#00e5ff' : '#ff3366'
+      });
+    }
+
+    // 2. Fireworks Setup
+    const fireworks = [];
+    const colors = ['#00e5ff', '#ff1e3c', '#ffd166', '#00ff88', '#ff70a6'];
+
+    function spawnFirework() {
+      const originX = w * 0.12 + Math.random() * (w * 0.76);
+      const originY = h * 0.08 + Math.random() * (h * 0.48);
+      const chosenColor = colors[Math.floor(Math.random() * colors.length)];
+      const count = 22 + Math.floor(Math.random() * 14);
+
+      for (let i = 0; i < count; i++) {
+        const rad = Math.random() * Math.PI * 2;
+        const spd = 1.0 + Math.random() * 2.8;
+        fireworks.push({
+          x: originX,
+          y: originY,
+          vx: Math.cos(rad) * spd,
+          vy: Math.sin(rad) * spd,
+          color: chosenColor,
+          alpha: 0.75,
+          decay: 0.012 + Math.random() * 0.012,
+          radius: 1.2 + Math.random() * 1.2
+        });
+      }
+    }
+
+    // Main Canvas Render Loop
+    let lastMeteorTime = 0;
+    let lastFireworkTime = 0;
+
+    function render(timestamp) {
+      ctx.clearRect(0, 0, w, h);
+      ctx.globalCompositeOperation = 'lighter';
+
+      // Timed Spawners
+      if (timestamp - lastMeteorTime > 750 + Math.random() * 900) {
+        spawnMeteor();
+        lastMeteorTime = timestamp;
+      }
+      if (timestamp - lastFireworkTime > 1600 + Math.random() * 1200) {
+        spawnFirework();
+        lastFireworkTime = timestamp;
+      }
+
+      // Draw & Update Meteors
+      for (let i = meteors.length - 1; i >= 0; i--) {
+        const m = meteors[i];
+        m.x += m.dx * m.speed;
+        m.y += m.dy * m.speed;
+
+        const tailX = m.x - m.dx * m.length;
+        const tailY = m.y - m.dy * m.length;
+
+        const grad = ctx.createLinearGradient(tailX, tailY, m.x, m.y);
+        grad.addColorStop(0, 'rgba(0, 0, 0, 0)');
+        grad.addColorStop(1, m.color);
+
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = m.size;
+        ctx.beginPath();
+        ctx.moveTo(tailX, tailY);
+        ctx.lineTo(m.x, m.y);
+        ctx.stroke();
+
+        // Subtle glowing head
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(m.x, m.y, m.size * 0.8, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Remove offscreen
+        if (m.y > h + 150 || m.x > w + 200) {
+          meteors.splice(i, 1);
+        }
+      }
+
+      // Draw & Update Fireworks
+      for (let i = fireworks.length - 1; i >= 0; i--) {
+        const f = fireworks[i];
+        f.x += f.vx;
+        f.y += f.vy + 0.04; // Gentle gravity
+        f.vx *= 0.985;
+        f.vy *= 0.985;
+        f.alpha -= f.decay;
+
+        if (f.alpha <= 0) {
+          fireworks.splice(i, 1);
+          continue;
+        }
+
+        ctx.globalAlpha = Math.max(f.alpha, 0);
+        ctx.fillStyle = f.color;
+        ctx.beginPath();
+        ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      ctx.globalAlpha = 1.0;
+      ctx.globalCompositeOperation = 'source-over';
+      requestAnimationFrame(render);
+    }
+
+    requestAnimationFrame(render);
   </script>
 
 </body>
