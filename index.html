@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#05080f">
+  <title>RAFTAAR | Cricket Expert</title>
+  
+  <!-- Preconnect & Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1125311620029617');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1125311620029617&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: #05080f;
+      background-image: 
+        radial-gradient(circle at 10% 15%, rgba(255, 30, 60, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 90% 85%, rgba(0, 229, 255, 0.12) 0%, transparent 45%);
+      font-family: 'Rajdhani', sans-serif;
+      color: #e2e8f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: 12px 14px calc(12px + env(safe-area-inset-bottom, 0px));
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Cyber Card Container */
+    .cyber-card {
+      position: relative;
+      width: 100%;
+      background: rgba(8, 14, 24, 0.95);
+      border: 1px solid rgba(0, 229, 255, 0.22);
+      clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+      padding: 18px 16px 20px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 229, 255, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Status Bar */
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: clamp(10px, 2.8vw, 12px);
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      margin-bottom: 14px;
+    }
+
+    .channel-active {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #00ff73;
+      text-transform: uppercase;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background-color: #00ff73;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #00ff73;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(0.9); opacity: 0.6; }
+      50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 12px #00ff73; }
+    }
+
+    .sys-id {
+      color: #00e5ff;
+      font-family: 'Orbitron', monospace;
+      letter-spacing: 1px;
+    }
+
+    /* Profile Avatar */
+    .profile-box {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .avatar-wrapper {
+      width: clamp(100px, 26vw, 120px);
+      height: clamp(100px, 26vw, 120px);
+      padding: 3px;
+      background: linear-gradient(135deg, #ff1e3c, #00e5ff);
+      clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.35);
+      animation: pulseBorder 3s infinite alternate;
+    }
+
+    @keyframes pulseBorder {
+      0% { filter: drop-shadow(0 0 6px rgba(255, 30, 60, 0.4)); }
+      100% { filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.6)); }
+    }
+
+    .avatar-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
+      display: block;
+    }
+
+    /* Main Headings */
+    .hero-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(26px, 7.5vw, 32px);
+      font-weight: 900;
+      text-align: center;
+      letter-spacing: 3px;
+      color: #ffffff;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 5px;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+    }
+
+    .sub-heading {
+      text-align: center;
+      font-size: clamp(11px, 3vw, 13px);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #ff334b;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .sub-heading span {
+      color: #00e5ff;
+    }
+
+    .hero-desc {
+      text-align: center;
+      font-size: clamp(13px, 3.6vw, 15px);
+      line-height: 1.4;
+      color: #a0aec0;
+      margin-bottom: 16px;
+      padding: 0 6px;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .stat-card {
+      background: rgba(14, 22, 36, 0.9);
+      border: 1px solid rgba(0, 229, 255, 0.15);
+      border-radius: 6px;
+      padding: 10px 4px;
+      text-align: center;
+    }
+
+    .stat-card .val {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(13px, 3.8vw, 16px);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 2px;
+      white-space: nowrap;
+    }
+
+    .stat-card .label {
+      font-size: clamp(9px, 2.5vw, 10px);
+      font-weight: 700;
+      color: #64748b;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    /* CTA Button (High Converting Mobile Tap Target) */
+    .btn-container {
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    .cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      min-height: 52px;
+      padding: 14px 16px;
+      border: none;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+      background: linear-gradient(90deg, #ff1e3c 0%, #ff3b30 40%, #00d2ff 100%);
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(15px, 4.4vw, 18px);
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-decoration: none;
+      text-transform: uppercase;
+      box-shadow: 0 4px 20px rgba(255, 30, 60, 0.5);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      animation: lightShine 2.8s infinite;
+    }
+
+    @keyframes lightShine {
+      0% { left: -100%; }
+      40%, 100% { left: 100%; }
+    }
+
+    .cta-btn:active {
+      transform: scale(0.97);
+      box-shadow: 0 2px 10px rgba(0, 210, 255, 0.6);
+    }
+
+    .cta-btn i {
+      font-size: clamp(18px, 4.5vw, 20px);
+    }
+
+    .handshake-text {
+      text-align: center;
+      font-size: clamp(10px, 2.7vw, 11px);
+      font-weight: 700;
+      color: #8da2bb;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .handshake-text i {
+      color: #ffbb00;
+      margin-right: 3px;
+    }
+
+    /* Footer Legal Links */
+    .footer-links {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .footer-links a {
+      color: #00e5ff;
+      text-decoration: underline;
+    }
+
+    .footer-links span {
+      color: #334155;
+    }
+
+    .disclaimer-text {
+      margin-top: 8px;
+      font-size: 10px;
+      color: #475569;
+      text-align: center;
+      line-height: 1.35;
+      padding: 0 10px;
+    }
+
+    /* Stylish Ads Setup Badge */
+    .ads-setup-badge {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #94a3b8;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .ads-setup-badge .highlight {
+      background: linear-gradient(90deg, #ff334b, #00e5ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    .ads-setup-badge a {
+      color: #00e5ff;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .ads-setup-badge a:active {
+      color: #ff334b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Cyber Card -->
+    <div class="cyber-card">
+      
+      <!-- Top Active Status -->
+      <div class="status-bar">
+        <div class="channel-active">
+          <div class="pulse-dot"></div>
+          VELOCITY CHANNEL ACTIVE
+        </div>
+        <div class="sys-id">SYS ID #RFT-992</div>
+      </div>
+
+      <!-- Hexagon Profile Pic -->
+      <div class="profile-box">
+        <div class="avatar-wrapper">
+          <img src="https://i.postimg.cc/3RTGRTBx/IMG-20261009-213621-906.jpg" alt="Raftaar Profile">
+        </div>
+      </div>
+
+      <!-- Title & Subtitle -->
+      <h1 class="hero-title">RAFTAAR</h1>
+      <div class="sub-heading">CRICKET EXPERT • IPL / ICC RADAR DESK</div>
+
+      <!-- Cricket Description -->
+      <p class="hero-desc">
+        Access Raftaar's official Telegram channel for high-tempo cricket match breakdowns, live pitch & player data, and instant match notifications.
+      </p>
+
+      <!-- Stat Badges -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="val">150+ KM/H</div>
+          <div class="label">BALL TEMPO</div>
+        </div>
+        <div class="stat-card">
+          <div class="val">IPL / ICC</div>
+          <div class="label">CIRCUIT</div>
+        </div>
+        <div class="stat-card">
+          <div class="val">VERIFIED</div>
+          <div class="label">COMMUNITY</div>
+        </div>
+      </div>
+
+      <!-- High-Converting Join Telegram CTA -->
+      <div class="btn-container">
+        <a href="https://t.me/+KK_w3bg_rphjMjQ1" class="cta-btn" onclick="trackLead()">
+          <i class="fab fa-telegram-plane"></i>
+          JOIN TELEGRAM
+        </a>
+      </div>
+
+      <div class="handshake-text">
+        <i class="fas fa-bolt"></i> DIRECT ENCRYPTED APP HANDSHAKE READY
+      </div>
+
+    </div>
+
+    <!-- Footer Links -->
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <span>|</span>
+      <a href="#">Terms &amp; Conditions</a>
+      <span>|</span>
+      <a href="#">Disclaimer</a>
+    </div>
+
+    <div class="disclaimer-text">
+      Not affiliated with Telegram, IPL, ICC, Meta Platforms, Inc., or Facebook. • © 2026 raftaar-cricket.online
+    </div>
+
+    <!-- Stylish Ads Setup By Babu Sahab -->
+    <div class="ads-setup-badge">
+      <span class="highlight">Ads Setup by</span>
+      <a href="https://t.me/sahab164" target="_blank">
+        Babu Sahab
+        <i class="fas fa-external-link-alt" style="font-size: 9px;"></i>
+      </a>
+    </div>
+
+  </div>
+
+  <script>
+    // Facebook Pixel Event Tracking
+    function trackLead() {
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead');
+      }
+    }
+  </script>
+
+</body>
+</html>
